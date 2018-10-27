@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskSchedulerCore;
+using TaskSchedulerDataBase;
 
 namespace TaskScedulerDemoApp
 {
@@ -21,17 +22,20 @@ namespace TaskScedulerDemoApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TaskCollection taskCollection;
+
         public MainWindow()
         {
             InitializeComponent();
 
+            this.taskCollection = new TaskCollection();
+
+            this.SyncWithDataBase();
             this.InitializeTaskList();
         }
 
         private void InitializeTaskList()
         {
-            TaskCollection taskCollection = new TaskCollection();
-
             RecurringTask vacuum = new RecurringTask("Run vacuum.")
             {
                 Interval = new TimeSpan(7, 23, 0, 0)
@@ -44,10 +48,15 @@ namespace TaskScedulerDemoApp
 
             dishes.AddOccurrence(new DateTime(2018, 10, 19), new TimeSpan(0, 20, 0));
 
-            taskCollection.AddTask(dishes);
-            taskCollection.AddTask(vacuum);
+            this.taskCollection.AddTask(dishes);
+            this.taskCollection.AddTask(vacuum);
 
-            this.taskList.ItemsSource = taskCollection;
+            this.taskList.ItemsSource = this.taskCollection;
+        }
+
+        private void SyncWithDataBase()
+        {
+            DataBaseManager dataBaseManager = new DataBaseManager(this.taskCollection);
         }
     }
 }

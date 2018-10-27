@@ -6,6 +6,10 @@ namespace TaskSchedulerCore
 {
     public class TaskOccurrence : IComparable
     {
+        public TaskOccurrence()
+        {
+        }
+
         public TaskOccurrence(DateTime moment, TimeSpan duration)
         {
             this.OccurrenceMoment = moment;
