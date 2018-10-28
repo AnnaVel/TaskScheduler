@@ -14,6 +14,6 @@ namespace TaskSchedulerCore
 
         bool TaskIsOverdue { get; }
 
-        event EventHandler TimeDueChanged
+        event EventHandler TimeDueChanged;
     }
 }
