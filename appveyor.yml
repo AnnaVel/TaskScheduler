@@ -1,0 +1,2 @@
+build_script:
+  - msbuild TaskScheduler.sln /p:Configuration=Release
