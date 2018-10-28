@@ -1,2 +1,4 @@
+image: Visual Studio 2017
 build_script:
-  - msbuild TaskScheduler.sln /p:Configuration=Release
+#  - msbuild TaskScheduler.sln /p:Configuration=Release
+- cmd: dotnet publish TaskSchedulerCore/TaskSchedulerCore.csproj
