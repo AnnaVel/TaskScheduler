@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LiteDB, Version=4.1.4.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiteDB.4.1.4\lib\net40\LiteDB.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -87,6 +90,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +103,10 @@
     <ProjectReference Include="..\TaskSchedulerCore\TaskSchedulerCore.csproj">
       <Project>{0d376d88-7ced-4a86-a104-ba05cceadefb}</Project>
       <Name>TaskSchedulerCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskSchedulerDataBase\TaskSchedulerDataBase.csproj">
+      <Project>{564aacac-01dc-4a1d-897d-7935503ca43c}</Project>
+      <Name>TaskSchedulerDataBase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

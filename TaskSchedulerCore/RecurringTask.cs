@@ -37,6 +37,7 @@ namespace TaskSchedulerCore
                 {
                     this.interval = value;
                     this.RecalculateTimeDue();
+                    this.OnTaskChanged();
                 }
             }
         }
@@ -49,10 +50,19 @@ namespace TaskSchedulerCore
             }
         }
 
+        public override TaskType TaskType
+        {
+            get
+            {
+                return TaskType.RecurringTask;
+            }
+        }
+
         public void AddOccurrence(DateTime moment, TimeSpan duration)
         {
             this.taskOccurrences.Add(new TaskOccurrence(moment, duration));
             this.RecalculateTimeDue();
+            this.OnTaskChanged();
         }
 
         private DateTime GetLastTimeTaskWasPerformed()
@@ -87,6 +97,7 @@ namespace TaskSchedulerCore
             {
                 this.lastCalculatedTimeDue = newTimeDue;
                 this.OnTimeDueChanged();
+                this.OnTaskChanged();
             }
         }
     }
